@@ -101,18 +101,23 @@ export default function App() {
 
           const rotZ = Math.sin(rad) * 12;
           
-          const brightness = 0.4 + (depthNorm * 0.7);
-          const contrast = 0.8 + (depthNorm * 0.35);
+          const isMobile = window.innerWidth <= 768;
+          let filterStr = 'none';
 
-          const shadowY = 10 + (depthNorm * 30);
-          const shadowBlur = 10 + (depthNorm * 20);
-          const shadowOpacity = 0.3 - (depthNorm * 0.15);
-          
-          let filterStr = `brightness(${brightness}) contrast(${contrast}) drop-shadow(0px ${shadowY}px ${shadowBlur}px rgba(0,0,0,${shadowOpacity}))`;
-          
-          if (distFromFront > 30) {
-             const blurVal = Math.min(8, (distFromFront / 180) * 12);
-             filterStr += ` blur(${blurVal}px)`;
+          if (!isMobile) {
+            const brightness = 0.4 + (depthNorm * 0.7);
+            const contrast = 0.8 + (depthNorm * 0.35);
+
+            const shadowY = 10 + (depthNorm * 30);
+            const shadowBlur = 10 + (depthNorm * 20);
+            const shadowOpacity = 0.3 - (depthNorm * 0.15);
+            
+            filterStr = `brightness(${brightness}) contrast(${contrast}) drop-shadow(0px ${shadowY}px ${shadowBlur}px rgba(0,0,0,${shadowOpacity}))`;
+            
+            if (distFromFront > 30) {
+               const blurVal = Math.min(8, (distFromFront / 180) * 12);
+               filterStr += ` blur(${blurVal}px)`;
+            }
           }
 
           // Directly animate the cached DOM node instead of querying the DOM string every frame

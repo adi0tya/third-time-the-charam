@@ -472,4 +472,18 @@ body {
   .title { font-size: 3rem; }
   .models-wrapper { width: 55%; bottom: 0; right: -5%; }
   .side-nav { display: none; }
+
+  /* Disable heavy graphics/animations on mobile */
+  .particle {
+    display: none !important; /* Particle animations lag mobile CPUs */
+  }
+  .img-glow {
+    display: none !important; /* Glow filters are highly demanding */
+  }
+  .floor-shadow {
+    display: none !important;
+  }
+  .food-img {
+    filter: none !important; /* Remove heavy drop-shadow filters on mobile */
+  }
 }
