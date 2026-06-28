@@ -386,8 +386,9 @@ export default function App() {
             maxWidth: '450px',
             width: '90%'
           }}>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem', color: '#ff4d6d' }}>Wanna see?</h2>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem', color: '#ff4d6d' }}>you got it right?</h2>
             <p style={{ fontSize: '1rem', color: '#aaa', lineHeight: 1.5, marginBottom: '2rem' }}>
+              Wanna see?<br />
               Want to see what my life feels like with you?
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
@@ -395,13 +396,7 @@ export default function App() {
                 onClick={() => setCurrentPage('wanna-see')}
                 style={{ padding: '0.8rem 2rem', borderRadius: '50px', border: 'none', background: '#ff4d6d', color: '#fff', fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer' }}
               >
-                Yes, show me! ❤️
-              </button>
-              <button 
-                onClick={() => setCurrentPage('main')}
-                style={{ padding: '0.8rem 2rem', borderRadius: '50px', border: '1px solid #444', background: 'transparent', color: '#aaa', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer' }}
-              >
-                Close
+                Next
               </button>
             </div>
           </div>
