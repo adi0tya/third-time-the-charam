@@ -470,6 +470,6 @@ body {
   .menu { display: none; }
   .hero-content { left: 5%; width: 55%; }
   .title { font-size: 3rem; }
-  .models-wrapper { width: 55%; bottom: 0; right: -5%; }
+  .models-wrapper { width: 55%; bottom: -10%; right: -5%; }
   .side-nav { display: none; }
 }
