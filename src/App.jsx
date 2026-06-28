@@ -154,14 +154,8 @@ export default function App() {
 
           if (bgRef.current) gsap.to(bgRef.current, { backgroundColor: sc.bg, duration: 0.8, ease: 'power1.inOut', overwrite: true });
           if (ringRef.current) gsap.to(ringRef.current, { borderColor: sc.ringColor, duration: 0.8, overwrite: true });
-          
           if (navLogoRef.current) gsap.to(navLogoRef.current, { color: sc.navColor, duration: 0.5, overwrite: true });
-          
-          menuRefs.current.forEach(menu => {
-            if (menu) gsap.to(menu, { color: sc.navColor, duration: 0.5, overwrite: true });
-          });
-          
-          if (navBtnRef.current) gsap.to(navBtnRef.current, { backgroundColor: sc.navColor, duration: 0.5, overwrite: true });
+          if (navBtnRef.current) gsap.to(navBtnRef.current, { color: sc.navColor, duration: 0.5, overwrite: true });
         }
       }
 
@@ -334,20 +328,105 @@ export default function App() {
   }
 
   if (currentPage === 'wanna-see') {
+    const coupleImages = [
+      { id: 1, src: '/images/95.jpg', label: 'Cute Us' },
+      { id: 2, src: '/images/IMG-20251108-WA0021 (1).jpg', label: 'Laughs' },
+      { id: 3, src: '/images/IMG-20251108-WA0024.jpg', label: 'Moments' },
+      { id: 4, src: '/images/IMG_20251213_18054517.jpeg', label: 'Together' }
+    ];
+
     return (
-      <div style={{ backgroundColor: '#111', width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: '#fff', fontFamily: "'Outfit', sans-serif" }}>
+      <div style={{ backgroundColor: '#16161a', width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', color: '#fff', fontFamily: "'Outfit', sans-serif", padding: '40px 20px', boxSizing: 'border-box', overflowX: 'hidden' }}>
         <button 
           onClick={() => setCurrentPage('main')}
-          style={{ position: 'absolute', top: '20px', left: '20px', background: 'transparent', border: '1px solid #444', color: '#aaa', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer' }}
+          style={{ position: 'absolute', top: '20px', left: '20px', background: 'transparent', border: '1px solid #333', color: '#aaa', padding: '8px 16px', borderRadius: '4px', cursor: 'pointer', zIndex: 10 }}
         >
           ← Home
         </button>
-        {/* Placeholder area for user to add image or video */}
-        <div style={{ border: '2px dashed #444', padding: '40px', borderRadius: '8px', textAlign: 'center', color: '#666', marginBottom: '2.5rem' }}>
-          <p style={{ margin: 0, fontSize: '1.2rem' }}>[ Your Picture or Video Here ]</p>
+
+        {/* Page Heading */}
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#ff4d6d', margin: '0 0 10px 0', textShadow: '0 4px 10px rgba(255, 77, 109, 0.15)' }}>
+            see how happy i am with you
+          </h1>
+          <p style={{ color: '#888', margin: 0, fontSize: '0.95rem' }}>our favorite memories hanging together</p>
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ color: '#888', marginBottom: '1rem' }}>I want to say something! Wanna listen?</p>
+
+        {/* The Hanging Rope & Photo Clothesline Container */}
+        <div style={{ width: '100%', maxWidth: '1000px', position: 'relative', margin: '20px 0', padding: '40px 0' }}>
+          {/* Hanging Rope element */}
+          <div style={{ position: 'absolute', top: '20px', left: '-5%', right: '-5%', height: '4px', background: 'linear-gradient(to right, #4a3319, #8d6e63, #4a3319)', borderRadius: '5px', boxShadow: '0 8px 15px rgba(0,0,0,0.5)', zIndex: 2 }}></div>
+          
+          {/* Clothesline photos flex layout */}
+          <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px', position: 'relative', zIndex: 3 }}>
+            {coupleImages.map((img, idx) => {
+              // Create randomized tilt angles for a realistic organic clothesline look
+              const tilts = [-5, 4, -3, 6];
+              const rotation = tilts[idx % tilts.length];
+              
+              return (
+                <div 
+                  key={img.id} 
+                  style={{ 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    position: 'relative',
+                    transform: `rotate(${rotation}deg)`,
+                    transition: 'transform 0.3s ease',
+                    cursor: 'pointer',
+                    marginTop: idx % 2 === 0 ? '10px' : '0px'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = `rotate(${rotation * 0.5}deg) scale(1.05)`}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = `rotate(${rotation}deg) scale(1)`}
+                >
+                  {/* Wooden Clip / Peg */}
+                  <div style={{ 
+                    width: '12px', 
+                    height: '28px', 
+                    background: '#d7ccc8', 
+                    border: '1.5px solid #8d6e63',
+                    borderRadius: '2px', 
+                    position: 'absolute', 
+                    top: '-15px', 
+                    zIndex: 4,
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.3)'
+                  }}>
+                    {/* Metal spring clip detail */}
+                    <div style={{ width: '100%', height: '2px', background: '#9e9e9e', position: 'absolute', top: '12px' }}></div>
+                  </div>
+
+                  {/* Photo frame */}
+                  <div style={{ 
+                    background: '#fff', 
+                    padding: '12px 12px 24px 12px', 
+                    borderRadius: '4px',
+                    boxShadow: '0 15px 35px rgba(0,0,0,0.4)',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                  }}>
+                    <img 
+                      src={img.src} 
+                      alt={img.label}
+                      style={{ 
+                        width: '125px', 
+                        height: '160px', 
+                        objectFit: 'cover', 
+                        borderRadius: '2px',
+                        display: 'block'
+                      }} 
+                    />
+                    <p style={{ margin: '8px 0 0 0', fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '0.85rem', color: '#6d4c41', textAlign: 'center', fontWeight: 600 }}>
+                      {img.label}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <p style={{ color: '#aaa', marginBottom: '1.2rem', fontSize: '1.1rem' }}>I want to say something! Wanna listen?</p>
           <button 
             onClick={() => setCurrentPage('proposal')}
             style={{ padding: '1rem 2.5rem', borderRadius: '50px', border: 'none', background: '#ff4d6d', color: '#fff', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', boxShadow: '0 8px 25px rgba(255, 77, 109, 0.25)' }}
@@ -444,18 +523,17 @@ export default function App() {
           ))}
         </div>
 
-        <nav className="navbar">
-          <div ref={navLogoRef} className="logo" style={{ color: scenes[0].navColor }}>
-            My<span>LOVE</span>
-          </div>
-          <div className="menu">
-            {['Home','About','Moments','Gallery','Forever'].map((item, i) => (
-              <a key={item} ref={el => menuRefs.current[i] = el} href="#" style={{ color: scenes[0].navColor }}>{item}</a>
-            ))}
-          </div>
-          <button ref={navBtnRef} className="nav-btn" style={{ backgroundColor: scenes[0].navColor }}>I Love You ❤️</button>
-        </nav>
 
+
+
+        <nav className="navbar" style={{ display: 'flex', justifyContent: 'space-between', padding: '1.8rem 4%', width: '100%', boxSizing: 'border-box', position: 'absolute', top: 0, left: 0, zIndex: 100 }}>
+          <div ref={navLogoRef} style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: "'Outfit', sans-serif", letterSpacing: '1px', transition: 'color 0.5s' }}>
+            I love you
+          </div>
+          <div ref={navBtnRef} style={{ fontWeight: 800, fontSize: '1.2rem', fontFamily: "'Outfit', sans-serif", letterSpacing: '1px', transition: 'color 0.5s' }}>
+            my sweetest girl
+          </div>
+        </nav>
 
         <div className="hero-content">
           {scenes.map((scene, i) => (

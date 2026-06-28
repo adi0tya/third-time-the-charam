@@ -5,17 +5,19 @@ in_dir = r"c:\Users\aditya\OneDrive\Desktop\Something\project1\public\images"
 out_dir = r"c:\Users\aditya\OneDrive\Desktop\Something\project1\public\images"
 
 files = [
-    "IMG-20260328-WA0005.jpg",
-    "IMG-20260331-WA0023.jpg",
-    "IMG_20260130_002122.jpg",
-    "IMG_20260310_213006.jpg"
+    "95.jpg",
+    "IMG-20251108-WA0021 (1).jpg",
+    "IMG-20251108-WA0024.jpg",
+    "IMG_20251213_18054517.jpeg"
 ]
 
 for f in files:
     in_path = os.path.join(in_dir, f)
-    out_path = os.path.join(out_dir, f.rsplit(".", 1)[0] + "_transparent.png")
+    # create clean file name for transparent png
+    clean_name = f.replace(" ", "_").replace("(", "").replace(")", "").rsplit(".", 1)[0]
+    out_path = os.path.join(out_dir, f"{clean_name}_transparent.png")
     if os.path.exists(in_path):
-        print(f"Processing {f}...")
+        print(f"Processing {f} -> {out_path}...")
         subprocess.run(["rembg", "i", in_path, out_path])
         print(f"Done: {out_path}")
     else:
