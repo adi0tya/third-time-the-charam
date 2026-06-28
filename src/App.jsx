@@ -468,7 +468,12 @@ export default function App() {
               key={scene.id} 
               ref={el => sceneRefs.current[i] = el}
               className="scene" 
-              style={{ color: scene.textColor, willChange: 'opacity, transform' }}
+              style={{ 
+                color: scene.textColor, 
+                willChange: 'opacity, transform',
+                opacity: i === 0 ? 1 : 0,
+                visibility: i === 0 ? 'visible' : 'hidden'
+              }}
             >
               <div className="text-content">
                 <h1 className="title">{scene.title}</h1>
