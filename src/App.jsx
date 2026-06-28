@@ -575,7 +575,11 @@ export default function App() {
               key={scene.id}
               ref={el => foodRefs.current[i] = el}
               className="food-container"
-              style={{ willChange: 'transform, opacity, filter' }}
+              style={{ 
+                willChange: 'transform, opacity, filter',
+                opacity: i === 0 ? 1 : 0,
+                visibility: i === 0 ? 'visible' : 'hidden'
+              }}
             >
               <div className="img-glow" style={{ background: `radial-gradient(ellipse at center 70%, ${scene.taglineColor}30 0%, transparent 70%)` }}></div>
               <img 
