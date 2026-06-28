@@ -13,7 +13,7 @@ const scenes = [
     bg: '#e8e0f0', textColor: '#2d1b4e', taglineColor: '#7c3aed',
     btnBg: '#7c3aed', btnText: '#fff', navColor: '#2d1b4e',
     ringColor: 'rgba(124,58,237,0.08)',
-    image: '/images/IMG-20260328-WA0005_transparent.png',
+    image: 'https://res.cloudinary.com/deevn56zp/image/upload/v1782631410/proposal_assets/IMG-20260328-WA0005_transparent.png',
     imageScale: 0.65,
     imageOffsetY: 20,
   },
@@ -25,7 +25,7 @@ const scenes = [
     bg: '#fdf6e3', textColor: '#5c4813', taglineColor: '#d4a017',
     btnBg: '#c8991f', btnText: '#fff', navColor: '#5c4813',
     ringColor: 'rgba(212,160,23,0.08)',
-    image: '/images/IMG-20260331-WA0023_transparent.png',
+    image: 'https://res.cloudinary.com/deevn56zp/image/upload/v1782631412/proposal_assets/IMG-20260331-WA0023_transparent.png',
   },
   {
     id: 3, num: '03',
@@ -35,7 +35,7 @@ const scenes = [
     bg: '#fde4ec', textColor: '#6b1d3a', taglineColor: '#e84393',
     btnBg: '#e84393', btnText: '#fff', navColor: '#6b1d3a',
     ringColor: 'rgba(232,67,147,0.08)',
-    image: '/images/IMG_20260130_002122_transparent.png',
+    image: 'https://res.cloudinary.com/deevn56zp/image/upload/v1782631415/proposal_assets/IMG_20260130_002122_transparent.png',
   },
   {
     id: 4, num: '04',
@@ -45,7 +45,7 @@ const scenes = [
     bg: '#e6f5e8', textColor: '#1a4731', taglineColor: '#2ecc71',
     btnBg: '#27ae60', btnText: '#fff', navColor: '#1a4731',
     ringColor: 'rgba(39,174,96,0.08)',
-    image: '/images/IMG_20260310_213006_transparent.png',
+    image: 'https://res.cloudinary.com/deevn56zp/image/upload/v1782631428/proposal_assets/IMG_20260310_213006_transparent.png',
   }
 ];
 
