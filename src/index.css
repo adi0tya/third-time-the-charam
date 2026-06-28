@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+.app-container {
+  position: relative;
+}
+
+.sticky-hero {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  perspective: 1200px; /* 3D Perspective for the entire hero */
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.8rem 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+}
+
+.logo span {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.menu {
+  display: flex;
+  gap: 2.5rem;
+  z-index: 100;
+}
+
+.menu a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s;
+}
+
+.menu a:hover {
+  opacity: 0.6;
+}
+
+.nav-btn {
+  font-family: 'Outfit', sans-serif;
+  padding: 0.75rem 1.6rem;
+  border-radius: 50px;
+  border: none;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===================== SIDE NAV ===================== */
+.side-nav {
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 50;
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #999;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================== HERO CONTENT (LEFT) ===================== */
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 4%;
+  width: 38%;
+  height: 100%;
+  z-index: 10;
+}
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.num-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.num {
+  font-weight: 600;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+
+.line {
+  height: 1.5px;
+  width: 50px;
+  opacity: 0.4;
+}
+
+.tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.title {
+  font-size: 5rem;
+  line-height: 1.05;
+  font-weight: 800;
+  white-space: pre-line;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1px;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.7;
+  margin-bottom: 2.5rem;
+  max-width: 85%;
+}
+
+.actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.btn-order, .btn-menu {
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-order {
+  border: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.btn-menu {
+  background: transparent;
+  border: 2px solid;
+}
+
+.btn-order:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.btn-menu:hover {
+  transform: translateY(-3px);
+}
+
+/* ===================== FOOD MODELS (CENTER-RIGHT, 3D) ===================== */
+.models-wrapper {
+  position: absolute;
+  bottom: -2%;
+  right: 5%;    /* Shifted left */
+  width: 55%;
+  height: 90%;
+  z-index: 20;
+  pointer-events: none;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-container {
+  position: absolute;
+  width: 140%;
+  max-width: 1200px;
+  max-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.img-glow {
+  position: absolute;
+  width: 75%;
+  height: 80%;
+  bottom: 10%;
+  left: 12.5%;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.food-img {
+  position: relative;
+  width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 1;
+
+  /* Multi-layered deep shadows for 3D pop */
+  filter:
+    drop-shadow(-8px 12px 8px rgba(0,0,0,0.3))
+    drop-shadow(-22px 35px 28px rgba(0,0,0,0.2))
+    drop-shadow(-50px 65px 55px rgba(0,0,0,0.12));
+}
+
+.floor-shadow {
+  position: absolute;
+  bottom: -3%;
+  left: 15%;
+  width: 70%;
+  height: 10%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.12) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(15px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===================== DECORATIVE CIRCLE RING ===================== */
+.circle-ring {
+  position: absolute;
+  bottom: 10%;
+  right: 12%;
+  width: 550px;
+  height: 550px;
+  border: 2px solid rgba(0,0,0,0.06);
+  border-radius: 50%;
+  z-index: 18;
+  pointer-events: none;
+  transition: border-color 1s ease;
+}
+
+.circle-ring::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 1px dashed rgba(0,0,0,0.04);
+  border-radius: 50%;
+}
+
+.circle-ring::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border: 1px solid rgba(0,0,0,0.03);
+  border-radius: 50%;
+}
+
+/* Reflection / Ground shadow beneath the food */
+.food-reflection {
+  position: absolute;
+  bottom: -2%;
+  right: 5%;
+  width: 60%;
+  height: 15%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%);
+  z-index: 19;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+/* ===================== PARTICLES ===================== */
+.particles-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Leaf shapes */
+.p-0, .p-1, .p-2 {
+  width: 18px; height: 22px;
+  background: #4caf50;
+  border-radius: 50% 0 50% 0;
+  opacity: 0.7;
+}
+.p-1 { background: #66bb6a; width: 14px; height: 17px; }
+.p-2 { background: #388e3c; width: 12px; height: 15px; }
+
+/* Tomato / onion rings */
+.p-3 { width: 22px; height: 22px; border: 3px solid #e74c3c; border-radius: 50%; background: transparent; opacity: 0.5; }
+.p-4 { width: 16px; height: 16px; border: 3px solid #f39c12; border-radius: 50%; background: transparent; opacity: 0.4; }
+
+/* Seasoning dots */
+.p-5, .p-6, .p-7 { width: 6px; height: 6px; border-radius: 50%; background: #f5d06e; opacity: 0.7; }
+.p-6 { background: #e0a830; width: 4px; height: 4px; }
+.p-7 { background: #d4a017; width: 5px; height: 5px; }
+
+/* Fry shapes */
+.p-8, .p-9 { width: 28px; height: 6px; background: #e6a740; border-radius: 4px; opacity: 0.5; }
+.p-9 { width: 22px; height: 5px; transform: rotate(25deg); }
+
+/* Sauce splashes */
+.p-10 { width: 10px; height: 10px; background: #c0392b; border-radius: 50%; opacity: 0.45; }
+.p-11 { width: 8px; height: 8px; background: #e74c3c; border-radius: 50%; opacity: 0.35; }
+
+/* Cheese particle */
+.p-12 { width: 14px; height: 8px; background: #f9ca24; border-radius: 30%; opacity: 0.5; }
+/* Herb */
+.p-13 { width: 10px; height: 14px; background: #27ae60; border-radius: 50% 0 50% 0; opacity: 0.6; }
+/* Smoke */
+.p-14 { width: 30px; height: 30px; background: rgba(255,255,255,0.15); border-radius: 50%; filter: blur(6px); }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  25% { transform: translateY(-20px) rotate(45deg) scale(1.05); }
+  50% { transform: translateY(-40px) rotate(90deg) scale(1); opacity: 0.5; }
+  75% { transform: translateY(-20px) rotate(135deg) scale(0.95); }
+  100% { transform: translateY(0) rotate(180deg) scale(1); opacity: 0.7; }
+}
+
+@keyframes floatDrift {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+  33% { transform: translate(15px, -25px) rotate(60deg); }
+  66% { transform: translate(-10px, -15px) rotate(120deg); opacity: 0.4; }
+  100% { transform: translate(0, 0) rotate(180deg); opacity: 0.6; }
+}
+
+.p-0 { top: 18%; left: 48%; animation: floatUp 7s infinite ease-in-out 0s; }
+.p-1 { top: 55%; left: 38%; animation: floatDrift 9s infinite ease-in-out 1.5s; }
+.p-2 { top: 28%; left: 62%; animation: floatUp 8s infinite ease-in-out 0.8s; }
+.p-3 { top: 12%; left: 72%; animation: floatDrift 10s infinite ease-in-out 2s; }
+.p-4 { top: 70%; left: 55%; animation: floatUp 8.5s infinite ease-in-out 1s; }
+.p-5 { top: 35%; left: 82%; animation: floatDrift 6s infinite ease-in-out 0.3s; }
+.p-6 { top: 78%; left: 28%; animation: floatUp 7.5s infinite ease-in-out 2.5s; }
+.p-7 { top: 48%; left: 44%; animation: floatDrift 8s infinite ease-in-out 1.2s; }
+.p-8 { top: 22%; left: 35%; animation: floatUp 9.5s infinite ease-in-out 0.5s; }
+.p-9 { top: 62%; left: 78%; animation: floatDrift 7s infinite ease-in-out 1.8s; }
+.p-10 { top: 8%;  left: 58%; animation: floatUp 8s infinite ease-in-out 2.2s; }
+.p-11 { top: 82%; left: 68%; animation: floatDrift 9s infinite ease-in-out 0.7s; }
+.p-12 { top: 42%; left: 22%; animation: floatUp 7.5s infinite ease-in-out 1.6s; }
+.p-13 { top: 15%; left: 88%; animation: floatDrift 8.5s infinite ease-in-out 0.2s; }
+.p-14 { top: 65%; left: 45%; animation: floatUp 10s infinite ease-in-out 3s; }
+
+/* ===================== SCROLL INDICATOR ===================== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 4%;
+  left: 4%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  z-index: 50;
+  opacity: 0.5;
+}
+
+.mouse {
+  width: 18px;
+  height: 28px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: scrollMouse 2s infinite;
+}
+
+@keyframes scrollMouse {
+  0% { top: 5px; opacity: 1; }
+  100% { top: 14px; opacity: 0; }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1200px) {
+  .title { font-size: 4rem; }
+  .hero-content { left: 8%; width: 42%; }
+  .models-wrapper { width: 50%; }
+}
+
+@media (max-width: 768px) {
+  .menu { display: none; }
+  .hero-content { left: 5%; width: 55%; }
+  .title { font-size: 3rem; }
+  .models-wrapper { width: 55%; bottom: 0; right: -5%; }
+  .side-nav { display: none; }
+}
