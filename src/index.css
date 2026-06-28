@@ -263,7 +263,7 @@ body {
 .food-img {
   position: relative;
   width: 100%;
-  max-height: 100vh;
+  max-height: 90vh;
   object-fit: contain;
   object-position: center bottom;
   z-index: 1;
